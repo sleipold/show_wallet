@@ -33,8 +33,10 @@ dependencies:
   provider: ^3.2.0
   # provider architecture
   provider_architecture: ^1.0.3
-  #firebase
+  # firebase authentication
   firebase_auth: ^0.15.3
+  # firebase database
+  cloud_firestore: ^0.13.0+1
 
 dev_dependencies:
   flutter_test:
@@ -52,8 +54,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/title.png
     - assets/images/icon_large.png
+    - assets/images/title.png
+    - assets/images/icon.png
+    - assets/images/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
