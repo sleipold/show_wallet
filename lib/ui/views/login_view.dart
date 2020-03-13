@@ -24,8 +24,8 @@ class LoginView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 150,
-                  child: Image.asset('assets/images/title.png'),
+                  height: 250,
+                  child: Image.asset('assets/images/logo.png'),
                 ),
                 InputField(
                   placeholder: 'Email',
