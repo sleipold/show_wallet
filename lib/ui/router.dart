@@ -1,3 +1,5 @@
+import 'package:showwallet/models/post.dart';
+import 'package:showwallet/ui/views/create_post_view.dart';
 import 'package:showwallet/ui/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:showwallet/constants/route_names.dart';
@@ -21,12 +23,20 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: HomeView(),
       );
+    case CreatePostViewRoute:
+      var postToEdit = settings.arguments as Post;
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: CreatePostView(
+          editingPost: postToEdit,
+        ),
+      );
     default:
       return MaterialPageRoute(
           builder: (_) => Scaffold(
-                body: Center(
-                    child: Text('No route defined for ${settings.name}')),
-              ));
+            body: Center(
+                child: Text('No route defined for ${settings.name}')),
+          ));
   }
 }
 
