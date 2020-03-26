@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class TextLink extends StatelessWidget {
   final String text;
   final Function onPressed;
+
   const TextLink(this.text, {this.onPressed});
 
   @override

@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:showwallet/constants/route_names.dart';
 import 'package:showwallet/models/post.dart';
 import 'package:showwallet/ui/views/create_post_view.dart';
 import 'package:showwallet/ui/views/home_view.dart';
-import 'package:flutter/material.dart';
-import 'package:showwallet/constants/route_names.dart';
 import 'package:showwallet/ui/views/login_view.dart';
 import 'package:showwallet/ui/views/signup_view.dart';
 
@@ -34,9 +34,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     default:
       return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
-                child: Text('No route defined for ${settings.name}')),
-          ));
+                body: Center(
+                    child: Text('No route defined for ${settings.name}')),
+              ));
   }
 }
 

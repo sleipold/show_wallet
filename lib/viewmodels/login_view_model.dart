@@ -9,7 +9,7 @@ import 'base_model.dart';
 
 class LoginViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
-  locator<AuthenticationService>();
+      locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
 

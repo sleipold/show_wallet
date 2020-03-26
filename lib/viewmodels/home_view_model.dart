@@ -12,6 +12,7 @@ class HomeViewModel extends BaseModel {
   final DialogService _dialogService = locator<DialogService>();
 
   List<Post> _posts;
+
   List<Post> get posts => _posts;
 
   void listenToPosts() {

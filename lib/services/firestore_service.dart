@@ -5,15 +5,14 @@ import 'package:flutter/services.dart';
 import 'package:showwallet/models/post.dart';
 import 'package:showwallet/models/user.dart';
 
-
 class FirestoreService {
   final CollectionReference _usersCollectionReference =
-  Firestore.instance.collection('users');
+      Firestore.instance.collection('users');
   final CollectionReference _postsCollectionReference =
-  Firestore.instance.collection('posts');
+      Firestore.instance.collection('posts');
 
   final StreamController<List<Post>> _postsController =
-  StreamController<List<Post>>.broadcast();
+      StreamController<List<Post>>.broadcast();
 
   Future createUser(User user) async {
     try {

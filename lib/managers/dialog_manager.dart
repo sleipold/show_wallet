@@ -5,6 +5,7 @@ import 'package:showwallet/services/dialog_service.dart';
 
 class DialogManager extends StatefulWidget {
   final Widget child;
+
   DialogManager({Key key, this.child}) : super(key: key);
 
   _DialogManagerState createState() => _DialogManagerState();

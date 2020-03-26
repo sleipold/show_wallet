@@ -9,6 +9,7 @@ class AuthenticationService {
   final FirestoreService _firestoreService = locator<FirestoreService>();
 
   User _currentUser;
+
   User get currentUser => _currentUser;
 
   Future loginWithEmail({

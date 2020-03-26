@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:provider_architecture/provider_architecture.dart';
 import 'package:showwallet/models/post.dart';
 import 'package:showwallet/ui/shared/ui_helpers.dart';
 import 'package:showwallet/ui/widgets/input_field.dart';
 import 'package:showwallet/viewmodels/create_post_view_model.dart';
-import 'package:flutter/material.dart';
-import 'package:provider_architecture/provider_architecture.dart';
 
 class CreatePostView extends StatelessWidget {
   final titleController = TextEditingController();
   final Post editingPost;
+
   CreatePostView({Key key, this.editingPost}) : super(key: key);
 
   @override
@@ -25,15 +26,15 @@ class CreatePostView extends StatelessWidget {
             child: !model.busy
                 ? Icon(Icons.add)
                 : CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(Colors.white),
-            ),
+                    valueColor: AlwaysStoppedAnimation(Colors.white),
+                  ),
             onPressed: () {
               if (!model.busy) {
                 model.addPost(title: titleController.text);
               }
             },
             backgroundColor:
-            !model.busy ? Theme.of(context).primaryColor : Colors.grey[600],
+                !model.busy ? Theme.of(context).primaryColor : Colors.grey[600],
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),

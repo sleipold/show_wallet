@@ -9,14 +9,16 @@ import 'base_model.dart';
 
 class SignUpViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
-  locator<AuthenticationService>();
+      locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   String _selectedRole = 'Select a User Role';
+
   String get selectedRole => _selectedRole;
 
   String _selectedTeam = 'Select a Team';
+
   String get selectedTeam => _selectedTeam;
 
   void setSelectedRole(dynamic role) {
@@ -28,7 +30,6 @@ class SignUpViewModel extends BaseModel {
     _selectedTeam = team;
     notifyListeners();
   }
-
 
   Future signUp({
     @required String email,

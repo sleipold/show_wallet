@@ -1,9 +1,10 @@
-import 'package:showwallet/models/post.dart';
 import 'package:flutter/material.dart';
+import 'package:showwallet/models/post.dart';
 
 class PostItem extends StatelessWidget {
   final Post post;
   final Function onDeleteItem;
+
   const PostItem({
     Key key,
     this.post,
@@ -20,9 +21,9 @@ class PostItem extends StatelessWidget {
         children: <Widget>[
           Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: Text(post.title),
-              )),
+            padding: const EdgeInsets.only(left: 15.0),
+            child: Text(post.title),
+          )),
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {

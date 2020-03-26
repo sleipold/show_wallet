@@ -1,5 +1,5 @@
-import 'package:showwallet/ui/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:showwallet/ui/shared/shared_styles.dart';
 
 /// A button that shows a busy indicator in place of title
 class BusyButton extends StatefulWidget {
@@ -7,6 +7,7 @@ class BusyButton extends StatefulWidget {
   final String title;
   final Function onPressed;
   final bool enabled;
+
   const BusyButton(
       {@required this.title,
       this.busy = false,

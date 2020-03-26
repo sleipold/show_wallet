@@ -1,12 +1,11 @@
-import 'package:showwallet/ui/views/signup_view.dart';
 import 'package:flutter/material.dart';
-import 'package:showwallet/services/navigation_service.dart';
 import 'package:showwallet/services/dialog_service.dart';
-import 'package:showwallet/ui/views/login_view.dart';
+import 'package:showwallet/services/navigation_service.dart';
 import 'package:showwallet/ui/views/startup_view.dart';
+
+import 'locator.dart';
 import 'managers/dialog_manager.dart';
 import 'ui/router.dart';
-import 'locator.dart';
 
 void main() {
   // Register all the models and services before the app starts

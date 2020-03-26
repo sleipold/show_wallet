@@ -7,7 +7,7 @@ import 'base_model.dart';
 
 class StartUpViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
-  locator<AuthenticationService>();
+      locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   Future handleStartUpLogic() async {
