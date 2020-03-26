@@ -24,9 +24,10 @@ class LoginView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 250,
+                  height: 150,
                   child: Image.asset('assets/images/logo.png'),
                 ),
+                verticalSpaceSmall,
                 InputField(
                   placeholder: 'Email',
                   controller: emailController,
@@ -54,7 +55,7 @@ class LoginView extends StatelessWidget {
                     )
                   ],
                 ),
-                verticalSpaceMedium,
+                verticalSpaceSmall,
                 TextLink(
                   'Create an Account if you\'re new.',
                   onPressed: () {

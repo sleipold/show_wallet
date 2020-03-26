@@ -16,10 +16,19 @@ class SignUpViewModel extends BaseModel {
   String _selectedRole = 'Select a User Role';
   String get selectedRole => _selectedRole;
 
+  String _selectedTeam = 'Select a Team';
+  String get selectedTeam => _selectedTeam;
+
   void setSelectedRole(dynamic role) {
     _selectedRole = role;
     notifyListeners();
   }
+
+  void setSelectedTeam(dynamic team) {
+    _selectedTeam = team;
+    notifyListeners();
+  }
+
 
   Future signUp({
     @required String email,
@@ -32,7 +41,8 @@ class SignUpViewModel extends BaseModel {
         email: email,
         password: password,
         fullName: fullName,
-        role: _selectedRole);
+        role: _selectedRole,
+        team: _selectedTeam);
 
     setBusy(false);
 

@@ -29,7 +29,7 @@ class SignUpView extends StatelessWidget {
                   fontSize: 38,
                 ),
               ),
-              verticalSpaceLarge,
+              verticalSpaceMedium,
               InputField(
                 placeholder: 'Full Name',
                 controller: fullNameController,
@@ -51,6 +51,12 @@ class SignUpView extends StatelessWidget {
                 items: ['Admin', 'User'],
                 title: model.selectedRole,
                 onItemSelected: model.setSelectedRole,
+              ),
+              verticalSpaceSmall,
+              ExpansionList<String>(
+                items: ['Narrhalla Pfeffenhausen'],
+                title: model.selectedTeam,
+                onItemSelected: model.setSelectedTeam,
               ),
               verticalSpaceMedium,
               Row(
