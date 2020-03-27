@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:showwallet/constants/route_names.dart';
 import 'package:showwallet/models/post.dart';
+import 'package:showwallet/ui/views/cashbox_view.dart';
 import 'package:showwallet/ui/views/create_post_view.dart';
+import 'package:showwallet/ui/views/debt_view.dart';
+import 'package:showwallet/ui/views/fine_catalog_view.dart';
 import 'package:showwallet/ui/views/home_view.dart';
 import 'package:showwallet/ui/views/login_view.dart';
 import 'package:showwallet/ui/views/signup_view.dart';
@@ -30,6 +33,21 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         viewToShow: CreatePostView(
           editingPost: postToEdit,
         ),
+      );
+    case CashboxViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: CashboxView(),
+      );
+    case FineCatalogViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: FineCatalogView(),
+      );
+    case DebtViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: DebtView(),
       );
     default:
       return MaterialPageRoute(

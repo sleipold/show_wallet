@@ -1,9 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:provider_architecture/provider_architecture.dart';
-import 'package:showwallet/ui/shared/ui_helpers.dart';
-import 'package:showwallet/ui/widgets/post_item.dart';
-import 'package:showwallet/viewmodels/home_view_model.dart';
+import 'package:showwallet/ui/views/cashbox_view.dart';
+import 'package:showwallet/ui/views/debt_view.dart';
+import 'package:showwallet/ui/views/fine_catalog_view.dart';
 
+class HomeView extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<HomeView> {
+  final tabs = [
+    CashboxView(),
+    FineCatalogView(),
+    DebtView(),
+  ];
+
+  int _currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: tabs[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.attach_money),
+            title: Text('Cashbox'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            title: Text('Fine Catalog'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.money_off),
+            title: Text('Debt'),
+          )
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+    );
+  }
+}
+
+/*
 class HomeView extends StatelessWidget {
   const HomeView({Key key}) : super(key: key);
 
@@ -60,3 +104,4 @@ class HomeView extends StatelessWidget {
             ));
   }
 }
+*/
