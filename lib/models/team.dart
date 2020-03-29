@@ -1,20 +1,26 @@
-class Team {
-  final String id;
-  final String name;
-  final double balance;
+import 'package:flutter/material.dart';
 
-  Team({this.id, this.name, this.balance});
+class Team {
+  final String teamDocumentId;
+  final String name;
+  final String balance;
+
+  Team({@required this.teamDocumentId, @required this.name, this.balance});
 
   Team.fromData(Map<String, dynamic> data)
-      : id = data['id'],
+      : teamDocumentId = data['teamDocumentId'],
         name = data['name'],
         balance = data['balance'];
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'balance': balance,
-    };
+  static Team fromMap(Map<String, dynamic> map, String teamDocumentId) {
+    if (map == null) return null;
+
+    return Team(
+      teamDocumentId: map['teamDocumentId'],
+      name: map['name'],
+      balance: map['balance'],
+    );
   }
+
+//TODO: Add toJson function to update firestore entry of team (see user.dart)
 }

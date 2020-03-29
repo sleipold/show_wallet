@@ -22,7 +22,7 @@ class CreatePostViewModel extends BaseModel {
 
     if (!_editing) {
       result = await _firestoreService
-          .addPost(Post(title: title, userId: currentUser.id));
+          .addPost(Post(title: title, userId: currentUser.userDocumentId));
     } else {
       result = await _firestoreService.updatePost(Post(
         title: title,

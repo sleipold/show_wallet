@@ -26,9 +26,9 @@ class Post {
 
     return Post(
       title: map['title'],
-      imageUrl: map['title'],
+      imageUrl: map['imageUrl'],
       userId: map['userId'],
-      documentId: map['documentId'],
+      documentId: documentId,
     );
   }
 }

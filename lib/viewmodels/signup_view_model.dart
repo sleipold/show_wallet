@@ -43,7 +43,7 @@ class SignUpViewModel extends BaseModel {
         password: password,
         fullName: fullName,
         role: _selectedRole,
-        team: _selectedTeam);
+        teamDocumentId: _selectedTeam);
 
     setBusy(false);
 

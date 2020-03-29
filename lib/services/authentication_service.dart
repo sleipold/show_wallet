@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:showwallet/locator.dart';
+import 'package:showwallet/models/team.dart';
 import 'package:showwallet/models/user.dart';
 import 'package:showwallet/services/firestore_service.dart';
 
@@ -12,6 +13,10 @@ class AuthenticationService {
 
   User get currentUser => _currentUser;
 
+  Team _currentTeam;
+
+  Team get currentTeam => _currentTeam;
+
   Future loginWithEmail({
     @required String email,
     @required String password,
@@ -22,6 +27,7 @@ class AuthenticationService {
         password: password,
       );
       await _populateCurrentUser(authResult.user);
+      await _populateCurrentTeam(currentUser.teamDocumentId);
       return authResult.user != null;
     } catch (e) {
       return e.message;
@@ -33,7 +39,7 @@ class AuthenticationService {
     @required String password,
     @required String fullName,
     @required String role,
-    @required String team,
+    @required String teamDocumentId,
   }) async {
     try {
       var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -43,11 +49,11 @@ class AuthenticationService {
 
       // create a new user profile on firestore
       _currentUser = User(
-        id: authResult.user.uid,
+        userDocumentId: authResult.user.uid,
         email: email,
         fullName: fullName,
         userRole: role,
-        team: team,
+        teamDocumentId: teamDocumentId,
       );
 
       await _firestoreService.createUser(_currentUser);
@@ -61,12 +67,19 @@ class AuthenticationService {
   Future<bool> isUserLoggedIn() async {
     var user = await _firebaseAuth.currentUser();
     await _populateCurrentUser(user);
+    await _populateCurrentTeam(currentUser.teamDocumentId);
     return user != null;
   }
 
   Future _populateCurrentUser(FirebaseUser user) async {
     if (user != null) {
       _currentUser = await _firestoreService.getUser(user.uid);
+    }
+  }
+
+  Future _populateCurrentTeam(String teamDocumentId) async {
+    if (teamDocumentId != null && teamDocumentId != "") {
+      _currentTeam = await _firestoreService.getTeam(teamDocumentId);
     }
   }
 }
