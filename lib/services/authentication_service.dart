@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:showwallet/locator.dart';
+import 'package:showwallet/models/debt.dart';
 import 'package:showwallet/models/team.dart';
 import 'package:showwallet/models/user.dart';
 import 'package:showwallet/services/firestore_service.dart';
@@ -10,12 +11,14 @@ class AuthenticationService {
   final FirestoreService _firestoreService = locator<FirestoreService>();
 
   User _currentUser;
+  Team _currentTeam;
+  Debt _currentDebt;
 
   User get currentUser => _currentUser;
 
-  Team _currentTeam;
-
   Team get currentTeam => _currentTeam;
+
+  Debt get currentDebt => _currentDebt;
 
   Future loginWithEmail({
     @required String email,
@@ -28,6 +31,7 @@ class AuthenticationService {
       );
       await _populateCurrentUser(authResult.user);
       await _populateCurrentTeam(currentUser.teamDocumentId);
+      await _populateCurrentDebt(currentUser.debtDocumentId);
       return authResult.user != null;
     } catch (e) {
       return e.message;
@@ -68,6 +72,7 @@ class AuthenticationService {
     var user = await _firebaseAuth.currentUser();
     await _populateCurrentUser(user);
     await _populateCurrentTeam(currentUser.teamDocumentId);
+    await _populateCurrentDebt(currentUser.debtDocumentId);
     return user != null;
   }
 
@@ -78,8 +83,14 @@ class AuthenticationService {
   }
 
   Future _populateCurrentTeam(String teamDocumentId) async {
-    if (teamDocumentId != null && teamDocumentId != "") {
+    if (teamDocumentId != null) {
       _currentTeam = await _firestoreService.getTeam(teamDocumentId);
+    }
+  }
+
+  Future _populateCurrentDebt(String debtDocumentId) async {
+    if (debtDocumentId != null && debtDocumentId != "") {
+      _currentDebt = await _firestoreService.getDebt(debtDocumentId);
     }
   }
 }

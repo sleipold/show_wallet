@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
+import 'package:showwallet/models/debt.dart';
 import 'package:showwallet/models/post.dart';
 import 'package:showwallet/models/team.dart';
 import 'package:showwallet/models/user.dart';
@@ -11,6 +12,8 @@ class FirestoreService {
       Firestore.instance.collection('users');
   final CollectionReference _teamsCollectionReference =
       Firestore.instance.collection('teams');
+  final CollectionReference _debtsCollectionReference =
+      Firestore.instance.collection('debts');
   final CollectionReference _postsCollectionReference =
       Firestore.instance.collection('posts');
 
@@ -144,6 +147,20 @@ class FirestoreService {
     try {
       var team = await _teamsCollectionReference.document(teamDocumentId).get();
       return Team.fromData(team.data);
+    } catch (e) {
+      // TODO: Find or create a way to repeat error handling without so much repeated code
+      if (e is PlatformException) {
+        return e.message;
+      }
+
+      return e.toString();
+    }
+  }
+
+  Future getDebt(String debtDocumentId) async {
+    try {
+      var debt = await _debtsCollectionReference.document(debtDocumentId).get();
+      return Debt.fromData(debt.data);
     } catch (e) {
       // TODO: Find or create a way to repeat error handling without so much repeated code
       if (e is PlatformException) {

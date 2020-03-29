@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:showwallet/locator.dart';
+import 'package:showwallet/models/debt.dart';
 import 'package:showwallet/models/team.dart';
 import 'package:showwallet/models/user.dart';
 import 'package:showwallet/services/authentication_service.dart';
@@ -11,6 +12,8 @@ class BaseModel extends ChangeNotifier {
   User get currentUser => _authenticationService.currentUser;
 
   Team get currentTeam => _authenticationService.currentTeam;
+
+  Debt get currentDebt => _authenticationService.currentDebt;
 
   bool _busy = false;
 

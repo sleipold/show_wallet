@@ -49,7 +49,7 @@ class CashboxView extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: Text(
-                            '36.00 €',
+                            '${model.currentDebt.value} €',
                             style: TextStyle(fontSize: 15),
                             textAlign: TextAlign.center,
                           ),
