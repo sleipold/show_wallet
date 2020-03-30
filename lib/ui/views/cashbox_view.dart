@@ -15,6 +15,43 @@ class CashboxView extends StatelessWidget {
         onModelReady: (model) => model.listenToTeams(),
         builder: (context, model, child) => Scaffold(
               backgroundColor: Colors.white,
+              appBar: AppBar(
+                title: Text('${model.currentTeam.name}'),
+              ),
+              drawer: Drawer(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: <Widget>[
+                    DrawerHeader(
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                      ),
+                      child: Text(
+                        '${model.currentUser.fullName}',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24.0,
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.account_circle),
+                      title: Text('Profile'),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.settings),
+                      title: Text('Settings'),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.exit_to_app),
+                      title: Text('Sign out'),
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+              ),
               body: Container(
                 color: Colors.blue,
                 margin: EdgeInsets.all(24),

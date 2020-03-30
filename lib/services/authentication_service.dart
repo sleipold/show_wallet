@@ -44,6 +44,7 @@ class AuthenticationService {
     @required String fullName,
     @required String role,
     @required String teamDocumentId,
+    @required String debtDocumentId,
   }) async {
     try {
       var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -58,6 +59,7 @@ class AuthenticationService {
         fullName: fullName,
         userRole: role,
         teamDocumentId: teamDocumentId,
+        debtDocumentId: debtDocumentId,
       );
 
       await _firestoreService.createUser(_currentUser);
@@ -71,9 +73,11 @@ class AuthenticationService {
   Future<bool> isUserLoggedIn() async {
     var user = await _firebaseAuth.currentUser();
     await _populateCurrentUser(user);
-    await _populateCurrentTeam(currentUser.teamDocumentId);
-    await _populateCurrentDebt(currentUser.debtDocumentId);
     return user != null;
+  }
+
+  Future<void> signOut() async {
+    return _firebaseAuth.signOut();
   }
 
   Future _populateCurrentUser(FirebaseUser user) async {
