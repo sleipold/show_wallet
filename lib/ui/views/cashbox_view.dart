@@ -3,6 +3,7 @@ import 'package:provider_architecture/provider_architecture.dart';
 import 'package:showwallet/ui/shared/ui_helpers.dart';
 import 'package:showwallet/ui/widgets/expansion_list.dart';
 import 'package:showwallet/ui/widgets/input_field.dart';
+import 'package:showwallet/ui/widgets/menu_drawer.dart';
 import 'package:showwallet/viewmodels/cashbox_view_model.dart';
 
 class CashboxView extends StatelessWidget {
@@ -17,41 +18,10 @@ class CashboxView extends StatelessWidget {
               backgroundColor: Colors.white,
               appBar: AppBar(
                 title: Text('${model.currentTeam.name}'),
+                backgroundColor: Colors.blue,
               ),
-              drawer: Drawer(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  children: <Widget>[
-                    DrawerHeader(
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                      ),
-                      child: Text(
-                        '${model.currentUser.fullName}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24.0,
-                        ),
-                      ),
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.account_circle),
-                      title: Text('Profile'),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.settings),
-                      title: Text('Settings'),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.exit_to_app),
-                      title: Text('Sign out'),
-                      onTap: () {},
-                    ),
-                  ],
-                ),
-              ),
+              drawer:
+                  MenuDrawer(currentUserFullName: model.currentUser.fullName),
               body: Container(
                 color: Colors.blue,
                 margin: EdgeInsets.all(24),

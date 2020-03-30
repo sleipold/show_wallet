@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:showwallet/constants/route_names.dart';
 
 class NavigationService {
   GlobalKey<NavigatorState> _navigationKey = GlobalKey<NavigatorState>();
@@ -12,5 +13,8 @@ class NavigationService {
   Future<dynamic> navigateTo(String routeName, {dynamic arguments}) {
     return _navigationKey.currentState
         .pushNamed(routeName, arguments: arguments);
+  }
+  void handleSignOut(BuildContext context) {
+    Navigator.of(context).pushNamedAndRemoveUntil(LoginViewRoute, (Route<dynamic> route) => false);
   }
 }
